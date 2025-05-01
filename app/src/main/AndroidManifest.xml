@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Location Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PIGEONSANDSEEDS"
+        tools:targetApi="31">
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Authentication Activity -->
+        <activity
+            android:name=".ui.auth.AuthActivity"
+            android:exported="true" />
+
+        <!-- Business Dashboard Activity -->
+        <activity
+            android:name=".ui.business.BusinessDashboardActivity"
+            android:exported="false" />
+
+        <!-- Business Registration Activity -->
+        <activity
+            android:name=".ui.business.BusinessRegistrationActivity"
+            android:exported="false" />
+
+        <!-- Create Offer Activity -->
+        <activity
+            android:name=".ui.business.CreateOfferActivity"
+            android:exported="false" />
+
+        <!-- User Dashboard Activity -->
+        <activity
+            android:name=".ui.user.UserDashboardActivity"
+            android:exported="false" />
+
+        <!-- Geofence Service -->
+        <service
+            android:name=".services.GeofenceService"
+            android:exported="false" />
+
+        <!-- Firebase Messaging Service -->
+        <service
+            android:name=".services.FirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Geofence Broadcast Receiver -->
+        <receiver
+            android:name=".services.GeofenceBroadcastReceiver"
+            android:exported="false" />
+
+        <!-- Meta-data for Firebase -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
+
+    </application>
+</manifest>
